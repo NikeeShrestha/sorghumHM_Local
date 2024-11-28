@@ -1,24 +1,24 @@
 #!/bin/bash
 conda init bash
-. ~/.bashrc
+# . ~/.bashrc
 
-. /home/schnablelab/anaconda3/etc/profile.d/conda.sh
+# . /home/schnablelab/anaconda3/etc/profile.d/conda.sh
 conda activate homotools
 qrygene=$1
 genome=$2
 
 # output directory
-outdir=/home/schnablelab/sorghumHM_Local/Output/$genome
+outdir=/srv/shiny-server/sample-apps/hello/Output/$genome
 
 if [ ! -d $outdir ]; then
 	mkdir $outdir
 fi
 
 # homomine command
-hm=/home/schnablelab/sorghumHM_Local/homotools/homomine
+hm=/home/ubuntu/homotools/homomine
 
 # genome data
-dbdir=/home/schnablelab/sorghumHM_Local/DataBase
+dbdir=/home/ubuntu/mounteds3/sorghumHM_Local/DataBase
 
 # run homomine
 if [ ! -f ${outdir}/${qrygene}/${qrygene}.homomine.report.html ]; then

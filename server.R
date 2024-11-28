@@ -2,7 +2,7 @@
 
 library(shiny)
 
-data <- read.delim("data/BTX623.genelist", header=F)
+data <- read.delim("/home/ubuntu/mounteds3/sorghumHM_Local/data/BTX623.genelist", header=F)
 colnames(data) <- c("Gene")
 
 ### function to output html
@@ -12,7 +12,7 @@ getPage <- function(htmlfile) {
 
 shinyServer(function(input, output, session) {
   # Introductory note
-  output$introNote <- renderText("The module homomine from Package Homotools is implemented to search a BTX623 gene in another sorghum genome. The service is provided by Liu lab at Kansas State University. Contact Sanzhen Liu(liu3zhen@ksu.edu) if you have a question.")
+  output$introNote <- renderText("The module homomine from Package Homotools developed by Liu Lab at Kansas State University is implemented to search a BTX623 gene in another sorghum genome. The service is provided by Schnable Lab at University of Nebraska-Lincoln.")
   
   # Standard variable to store folder path
   foldertoremove <- NULL
@@ -52,11 +52,11 @@ shinyServer(function(input, output, session) {
     jobStatus$running <- TRUE
     
     # Perform analysis
-    system(paste("bash scripts/1m_B73v5_homomine.sh", input$gene, input$genome))  # Run homomine
+    system(paste("bash /home/ubuntu/mounteds3/sorghumHM_Local/scripts/1m_B73v5_homomine.sh", input$gene, input$genome))  # Run homomine
     
     # Construct output paths
-    htmlout <- paste0("Output/", input$genome, "/", input$gene, "/", input$gene, ".homomine.report.html")
-    foldertoremove <<- paste0("Output/", input$genome, "/", input$gene)  # Store folder path in global variable
+    htmlout <- paste0("/home/ubuntu/", input$genome, "/", input$gene, "/", input$gene, ".homomine.report.html")
+    foldertoremove <<- paste0("/home/ubuntu/", input$genome, "/", input$gene)  # Store folder path in global variable
     
     # Display HTML output
     if (file.exists(htmlout)) {

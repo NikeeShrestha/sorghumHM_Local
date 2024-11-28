@@ -10,7 +10,7 @@ library(shiny)
 #actionButton("action", "homomine")
 
 ### genome list
-genomes_df <- read.delim("data/genomelist", header=F)
+genomes_df <- read.delim("/home/ubuntu/mounteds3/sorghumHM_Local/data/genomelist", header=F)
 genomes <- genomes_df[, 1]
 
 shinyUI(fluidPage(
